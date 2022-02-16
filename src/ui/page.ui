@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TabWidget</class>
+ <widget class="QTabWidget" name="TabWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>984</width>
+    <height>646</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>TabWidget</string>
+  </property>
+  <property name="currentIndex">
+   <number>0</number>
+  </property>
+  <widget class="QWidget" name="EqualizerTab">
+   <attribute name="title">
+    <string>Equalizer</string>
+   </attribute>
+   <layout class="QVBoxLayout" name="verticalLayout_10">
+    <item>
+     <layout class="QVBoxLayout" name="EqualizerLayout"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="GuitarTab">
+   <attribute name="title">
+    <string>Guitar</string>
+   </attribute>
+   <layout class="QVBoxLayout" name="verticalLayout_4">
+    <item>
+     <layout class="QVBoxLayout" name="GuitarLayout"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="PianoTab">
+   <attribute name="title">
+    <string>Piano</string>
+   </attribute>
+   <layout class="QVBoxLayout" name="verticalLayout_9">
+    <item>
+     <layout class="QVBoxLayout" name="PianoLayout"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="DrumTab">
+   <attribute name="title">
+    <string>Bongos</string>
+   </attribute>
+   <layout class="QVBoxLayout" name="verticalLayout_8">
+    <item>
+     <layout class="QVBoxLayout" name="DrumLayout"/>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
