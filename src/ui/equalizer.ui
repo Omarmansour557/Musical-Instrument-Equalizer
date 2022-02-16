@@ -57,16 +57,21 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_4">
        <item>
-        <widget class="QPushButton" name="PlayButton">
-         <property name="text">
-          <string/>
+        <widget class="QPushButton" name="LoadButton">
+         <property name="maximumSize">
+          <size>
+           <width>100</width>
+           <height>16777215</height>
+          </size>
          </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="PauseButton">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(78, 154, 6);</string>
+         </property>
          <property name="text">
-          <string/>
+          <string>Load</string>
          </property>
         </widget>
        </item>
@@ -74,14 +79,74 @@
         <widget class="QSlider" name="VolumeSlider">
          <property name="maximumSize">
           <size>
-           <width>417</width>
+           <width>237</width>
            <height>16777215</height>
           </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>ClosedHandCursor</cursorShape>
          </property>
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
         </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="PlayButton">
+         <property name="minimumSize">
+          <size>
+           <width>155</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>100000</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="PauseButton">
+         <property name="minimumSize">
+          <size>
+           <width>155</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>100000</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </item>
@@ -103,7 +168,7 @@
        <item>
         <layout class="QVBoxLayout" name="verticalLayout">
          <item>
-          <layout class="QVBoxLayout" name="PianoIcon"/>
+          <layout class="QHBoxLayout" name="PianoIcon"/>
          </item>
          <item>
           <widget class="QLabel" name="label">
@@ -114,11 +179,20 @@
          </item>
          <item alignment="Qt::AlignHCenter">
           <widget class="QSlider" name="GuitarSlider">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>100</height>
+            </size>
+           </property>
            <property name="maximumSize">
             <size>
              <width>16777215</width>
              <height>100</height>
             </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>ClosedHandCursor</cursorShape>
            </property>
            <property name="orientation">
             <enum>Qt::Vertical</enum>
@@ -150,7 +224,7 @@
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
-          <layout class="QVBoxLayout" name="BongoIcon"/>
+          <layout class="QHBoxLayout" name="SnareIcon"/>
          </item>
          <item>
           <widget class="QLabel" name="label_3">
@@ -161,11 +235,20 @@
          </item>
          <item alignment="Qt::AlignHCenter">
           <widget class="QSlider" name="PianoSlider">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="maximumSize">
             <size>
              <width>16777215</width>
              <height>100</height>
             </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>ClosedHandCursor</cursorShape>
            </property>
            <property name="orientation">
             <enum>Qt::Vertical</enum>
@@ -197,7 +280,7 @@
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
-          <layout class="QVBoxLayout" name="GuitarIcon"/>
+          <layout class="QHBoxLayout" name="PiccoloIcon"/>
          </item>
          <item>
           <widget class="QLabel" name="label_6">
@@ -213,6 +296,9 @@
              <width>16777215</width>
              <height>100</height>
             </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>ClosedHandCursor</cursorShape>
            </property>
            <property name="orientation">
             <enum>Qt::Vertical</enum>
