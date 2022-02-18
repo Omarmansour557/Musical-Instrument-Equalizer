@@ -10,10 +10,6 @@ from scipy import signal
 import matplotlib.pyplot as plt
 import math
 from equalizer_worker import EqualizerWorker
-# import holoviews as hv
-# from colorcet.plotting import swatches, sine_combs
-
-# hv.notebook_extension("matplotlib")
 
 
 def addIcon(name, icon, layout, color):
@@ -27,7 +23,8 @@ def addIcon(name, icon, layout, color):
 
 
 class Equalizer (qtw.QWidget):
-    sound_signal = qtc.pyqtSignal(object,float,tuple,float)
+    sound_signal = qtc.pyqtSignal(object, float, tuple, float)
+
     def __init__(self):
         super().__init__()
 
@@ -46,7 +43,7 @@ class Equalizer (qtw.QWidget):
         self.PauseButton.clicked.connect(self.pauseSound)
         self.SpectrogramRadioBtn.toggled.connect(self.showAndHideSpec)
         self.VolumeSlider.sliderReleased.connect(self.updateGraph)
-        
+
         self.PianoSlider.sliderReleased.connect(self.updatePianoSound)
         self.PiccoloSlider.sliderReleased.connect(self.updatePiccoloSound)
         self.SnareSlider.sliderReleased.connect(self.updateSnareSound)
@@ -59,13 +56,11 @@ class Equalizer (qtw.QWidget):
         self.thread_equalizer.start()
 
         self.sound_signal.connect(self.equalizer_worker.equalizer)
-        self.equalizer_worker.equalizer_ready_now.connect(self.updateDataAfterEqualized)
-
-
+        self.equalizer_worker.equalizer_ready_now.connect(
+            self.updateDataAfterEqualized)
 
         pen = pg.mkPen(color=(0, 0, 255))
         self.graph = self.signal_viewer_widget.plot([], [], pen=pen)
-        
 
         self.sample_rate = 0
         self.counter = 0
@@ -73,39 +68,28 @@ class Equalizer (qtw.QWidget):
         self.raw_data = []
         self.aux_data = []
 
-
-
     def updateDataAfterEqualized(self, data):
         self.aux_data = data
         self.plotSpectrogram()
-        sd.play(self.aux_data[self.counter*self.sample_rate//10: ], self.sample_rate)
-           
-        
-
-
-
-
-
+        sd.play(self.aux_data[self.counter *
+                self.sample_rate//10:], self.sample_rate)
 
     def updatePianoSound(self):
         slider_value_piano = self.PianoSlider.value()
-        self.sound_signal.emit(self.data, self.sample_rate, (0,5000), slider_value_piano)
-
+        self.sound_signal.emit(self.data, self.sample_rate,
+                               (0, 5000), slider_value_piano)
 
     def updatePiccoloSound(self):
         slider_value_piccolo = self.PiccoloSlider.value()
 
-        self.sound_signal.emit(self.data, self.sample_rate, (5000,10000), slider_value_piccolo)
-
+        self.sound_signal.emit(self.data, self.sample_rate,
+                               (5000, 10000), slider_value_piccolo)
 
     def updateSnareSound(self):
         slider_value_snare = self.SnareSlider.value()
 
-        self.sound_signal.emit(self.data, self.sample_rate, (10000,15000), slider_value_snare)
-
-
-
-
+        self.sound_signal.emit(self.data, self.sample_rate,
+                               (10000, 15000), slider_value_snare)
 
     def uiDesigner(self):
         self.sliders = {"Piano": ["mdi.piano", self.PianoIcon, "green"],
@@ -144,23 +128,18 @@ class Equalizer (qtw.QWidget):
         self.timer.start()
         sd.play(self.data, self.sample_rate)
 
-        
-
     def framesPerSec(self):
         if(len(self.aux_data) == 0):
             self.graph.setData(self.time[self.counter*self.sample_rate//10: self.sample_rate*(
                 self.counter+1)//10], self.data[self.counter*self.sample_rate//10: self.sample_rate*(self.counter+1)//10])
         else:
             self.graph.setData(self.time[self.counter*self.sample_rate//10: self.sample_rate*(
-            self.counter+1)//10], self.aux_data[self.counter*self.sample_rate//10: self.sample_rate*(self.counter+1)//10])
-
-
+                self.counter+1)//10], self.aux_data[self.counter*self.sample_rate//10: self.sample_rate*(self.counter+1)//10])
 
         self.counter += 1
 
     def plotSpectrogram(self):
 
-        
         self.powerSpectrum, self.freqenciesFound, _, _ = plt.specgram(
             self.data, Fs=self.sample_rate)
 
@@ -175,24 +154,19 @@ class Equalizer (qtw.QWidget):
         # Item for displaying image data
         img = pg.ImageItem()
 
-
-        
-
-
-
-
         img.setImage(self.powerSpectrum)
         # Scale the X and Y Axis to time and frequency (standard is pixels)
         img.scale(self.time[-1]/np.size(self.powerSpectrum,
                   axis=1), math.pi/np.size(self.powerSpectrum, axis=0))
         pos = np.array([0., 1., 0.5, 0.25, 0.75])
-        color = np.array([[0,255,255,255], [255,255,0,255], [0,0,0,255], (0, 0, 255, 255), (255, 0, 0, 255)], dtype=np.ubyte)
+        color = np.array([[0, 255, 255, 255], [255, 255, 0, 255], [
+                         0, 0, 0, 255], (0, 0, 255, 255), (255, 0, 0, 255)], dtype=np.ubyte)
         cmap = pg.ColorMap(pos, color)
         lut = cmap.getLookupTable(0.0, 1.0, 256)
 
         # set colormap
         img.setLookupTable(lut)
-        img.setLevels([-50,40])
+        img.setLevels([-50, 40])
         p1.addItem(img)
         # Add a histogram with which to control the gradient of the image
         hist = pg.HistogramLUTItem()
@@ -226,18 +200,8 @@ class Equalizer (qtw.QWidget):
         value = self.VolumeSlider.value()
         self.updateDataAfterChangeSliderVolume(value)
 
-
     def updateDataAfterChangeSliderVolume(self, value):
-        
-        
         factor = 1.2**value
-        
         self.aux_data = (self.data) * factor
-        sd.play(self.aux_data[self.counter*self.sample_rate//10: ], self.sample_rate)
-           
-            
-
-        
-        
-
-        
+        sd.play(self.aux_data[self.counter *
+                self.sample_rate//10:], self.sample_rate)
