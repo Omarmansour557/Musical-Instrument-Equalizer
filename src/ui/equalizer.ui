@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>905</width>
-    <height>455</height>
+    <height>374</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -57,7 +57,26 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_4">
        <item>
+        <spacer name="horizontalSpacer_6">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>24</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
         <widget class="QPushButton" name="LoadButton">
+         <property name="minimumSize">
+          <size>
+           <width>131</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="maximumSize">
           <size>
            <width>100</width>
@@ -76,7 +95,26 @@
         </widget>
        </item>
        <item>
+        <spacer name="horizontalSpacer_9">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
         <widget class="QSlider" name="VolumeSlider">
+         <property name="minimumSize">
+          <size>
+           <width>160</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="maximumSize">
           <size>
            <width>237</width>
@@ -86,10 +124,35 @@
          <property name="cursor">
           <cursorShape>ClosedHandCursor</cursorShape>
          </property>
+         <property name="minimum">
+          <number>-5</number>
+         </property>
+         <property name="maximum">
+          <number>7</number>
+         </property>
+         <property name="value">
+          <number>1</number>
+         </property>
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
         </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="SpeakerIcon"/>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_7">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
        </item>
        <item>
         <widget class="QPushButton" name="PlayButton">
@@ -136,6 +199,33 @@
         </widget>
        </item>
        <item>
+        <spacer name="horizontalSpacer_8">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="SpectrogramRadioBtn">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(239, 41, 41);
+font: 75 italic 13pt &quot;Ubuntu Condensed&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Spectrogram</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <spacer name="horizontalSpacer_5">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
@@ -178,7 +268,7 @@
           </widget>
          </item>
          <item alignment="Qt::AlignHCenter">
-          <widget class="QSlider" name="GuitarSlider">
+          <widget class="QSlider" name="PianoSlider">
            <property name="minimumSize">
             <size>
              <width>0</width>
@@ -193,6 +283,12 @@
            </property>
            <property name="cursor">
             <cursorShape>ClosedHandCursor</cursorShape>
+           </property>
+           <property name="minimum">
+            <number>-10</number>
+           </property>
+           <property name="maximum">
+            <number>10</number>
            </property>
            <property name="orientation">
             <enum>Qt::Vertical</enum>
@@ -234,7 +330,7 @@
           </widget>
          </item>
          <item alignment="Qt::AlignHCenter">
-          <widget class="QSlider" name="PianoSlider">
+          <widget class="QSlider" name="SnareSlider">
            <property name="minimumSize">
             <size>
              <width>0</width>
@@ -249,6 +345,12 @@
            </property>
            <property name="cursor">
             <cursorShape>ClosedHandCursor</cursorShape>
+           </property>
+           <property name="minimum">
+            <number>-10</number>
+           </property>
+           <property name="maximum">
+            <number>10</number>
            </property>
            <property name="orientation">
             <enum>Qt::Vertical</enum>
@@ -290,7 +392,7 @@
           </widget>
          </item>
          <item alignment="Qt::AlignHCenter">
-          <widget class="QSlider" name="BongosSlider">
+          <widget class="QSlider" name="PiccoloSlider">
            <property name="maximumSize">
             <size>
              <width>16777215</width>
@@ -299,6 +401,12 @@
            </property>
            <property name="cursor">
             <cursorShape>ClosedHandCursor</cursorShape>
+           </property>
+           <property name="minimum">
+            <number>-10</number>
+           </property>
+           <property name="maximum">
+            <number>10</number>
            </property>
            <property name="orientation">
             <enum>Qt::Vertical</enum>
